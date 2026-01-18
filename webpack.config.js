@@ -1,7 +1,8 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
-const {CleanWebpackPlugin}=require("clean-webpack-plugin")
+const {CleanWebpackPlugin}=require("clean-webpack-plugin");
+const { type } = require("os");
 module.exports={
     mode:"development",
     entry:"./index.js",
@@ -30,6 +31,10 @@ module.exports={
        {
         test: /\.scss$/, // Targets scss files
         use: [MiniCssExtractPlugin.loader,'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        type:"asset/resource"
       }
     ]
   },
