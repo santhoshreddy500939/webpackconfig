@@ -1,0 +1,25 @@
+const path = require("path");
+
+module.exports={
+    mode:"development",
+    entry:"./index.js",
+    output:{
+        filename:"bundle.js",
+        path:path.resolve(__dirname,'./dist')
+    },
+  
+  module: {
+    rules: [
+      {
+        test: /\.(?:js|mjs|cjs)$/, // Targets JS files
+        exclude: /node_modules/,   // Do not transpile library code
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env','@babel/preset-react']
+          }
+        }
+      }
+    ]
+  }
+}
