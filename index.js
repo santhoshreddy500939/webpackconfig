@@ -1,12 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import Header from "./Components/Header/header";
 import Paragraph from "./Components/Paragraph/paragraph";
 
 function App(){
-    <>
-    <Header/>
-    <Paragraph/>
-    </>
+    return (
+        <>
+        <Header/>
+        <Paragraph/>
+        </>
+    );
 }
-ReactDOM.render(<App/>,document.getElementById('app'))
+
+const root = createRoot(document.getElementById('app'));
+root.render(<App/>);

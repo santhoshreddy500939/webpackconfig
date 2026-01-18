@@ -1,3 +1,4 @@
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 module.exports={
@@ -19,7 +20,18 @@ module.exports={
             presets: ['@babel/preset-env','@babel/preset-react']
           }
         }
+      },
+       {
+        test: /\.css$/, // Targets JS files
+        use: [MiniCssExtractPlugin.loader,'css-loader']
       }
     ]
-  }
+  },
+  plugins:[
+    new MiniCssExtractPlugin({
+        filename:"mystyle.css"
+    })
+  ]
+    
+  
 }
