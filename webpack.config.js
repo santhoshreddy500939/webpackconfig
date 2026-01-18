@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
-
+const {CleanWebpackPlugin}=require("clean-webpack-plugin")
 module.exports={
     mode:"development",
     entry:"./index.js",
@@ -23,8 +23,13 @@ module.exports={
         }
       },
        {
-        test: /\.css$/, // Targets JS files
+        test: /\.css$/, // Targets css files
         use: [MiniCssExtractPlugin.loader,'css-loader']
+      }
+      ,
+       {
+        test: /\.scss$/, // Targets scss files
+        use: [MiniCssExtractPlugin.loader,'css-loader', 'sass-loader']
       }
     ]
   },
@@ -35,7 +40,8 @@ module.exports={
 
     new HtmlWebpackPlugin({
         template:"index.html"
-    })
+    }),
+    new CleanWebpackPlugin()
 
   ]
     
