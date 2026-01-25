@@ -8,3 +8,5 @@ changing process from normal files into react:
         installing the npm packages webpack webpack-cli --save-dev
                                     react react-dom --save
                                     @babel-core @babel-preset-env @babel-preset-react babel-loader
+                                    webpack-dev-server --save-dev 
+                                    webpack-merge --save-dev
