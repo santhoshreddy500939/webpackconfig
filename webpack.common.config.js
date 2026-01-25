@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const {CleanWebpackPlugin}=require("clean-webpack-plugin");
+const { ModuleFederationPlugin } = require("webpack").container;
 module.exports={
     mode:"development",
     entry:"./index.js",
@@ -27,7 +28,12 @@ module.exports={
       }
     ]
   },
-  plugins:[
+  plugins:[new ModuleFederationPlugin({
+      name: "hostApp",
+      remotes: {
+        RemoteApp: "RemoteApp@http://localhost:9001/remoteappbuild.js",
+      }
+    }),
     new HtmlWebpackPlugin({
         template:"index.html"
     }),
